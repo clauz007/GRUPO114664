@@ -1,0 +1,157 @@
+package gui;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import javax.swing.JButton;
+
+public class V1 extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JTextField txtCod;
+	private JLabel lblNewLabel_2;
+	private JTextField txtNom;
+	private JLabel lblNewLabel_3;
+	private JTextField txtPc;
+	private JLabel lblNewLabel_4;
+	private JTextField txtStock;
+	private JLabel lblNewLabel_5;
+	private JTextField textField_1;
+	private JLabel lblNewLabel_6;
+	private JTextField txtPV;
+	private JTextArea textArea;
+	private JButton btnNewButton;
+	private JButton btnNewButton_1;
+	private JButton btnNewButton_2;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					V1 frame = new V1();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public V1() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 781, 510);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		{
+			lblNewLabel = new JLabel("Sistema de Gestión de Productos ");
+			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+			lblNewLabel.setBounds(262, 11, 267, 14);
+			contentPane.add(lblNewLabel);
+		}
+		{
+			lblNewLabel_1 = new JLabel("Código del Producto:");
+			lblNewLabel_1.setBounds(60, 52, 154, 14);
+			contentPane.add(lblNewLabel_1);
+		}
+		{
+			txtCod = new JTextField();
+			txtCod.setBounds(187, 49, 148, 20);
+			contentPane.add(txtCod);
+			txtCod.setColumns(10);
+		}
+		{
+			lblNewLabel_2 = new JLabel("Nombre del Producto:");
+			lblNewLabel_2.setBounds(60, 80, 154, 14);
+			contentPane.add(lblNewLabel_2);
+		}
+		{
+			txtNom = new JTextField();
+			txtNom.setBounds(187, 77, 148, 20);
+			contentPane.add(txtNom);
+			txtNom.setColumns(10);
+		}
+		{
+			lblNewLabel_3 = new JLabel("Precio a Costo:");
+			lblNewLabel_3.setBounds(60, 109, 154, 14);
+			contentPane.add(lblNewLabel_3);
+		}
+		{
+			txtPc = new JTextField();
+			txtPc.setBounds(187, 106, 148, 20);
+			contentPane.add(txtPc);
+			txtPc.setColumns(10);
+		}
+		{
+			lblNewLabel_4 = new JLabel("Stock:");
+			lblNewLabel_4.setBounds(463, 52, 82, 14);
+			contentPane.add(lblNewLabel_4);
+		}
+		{
+			txtStock = new JTextField();
+			txtStock.setBounds(565, 49, 148, 20);
+			contentPane.add(txtStock);
+			txtStock.setColumns(10);
+		}
+		{
+			lblNewLabel_5 = new JLabel("Cantidad a Vender:");
+			lblNewLabel_5.setBounds(463, 80, 137, 14);
+			contentPane.add(lblNewLabel_5);
+		}
+		{
+			textField_1 = new JTextField();
+			textField_1.setBounds(565, 77, 148, 20);
+			contentPane.add(textField_1);
+			textField_1.setColumns(10);
+		}
+		{
+			lblNewLabel_6 = new JLabel("Precio de Venta:");
+			lblNewLabel_6.setBounds(463, 109, 137, 14);
+			contentPane.add(lblNewLabel_6);
+		}
+		{
+			txtPV = new JTextField();
+			txtPV.setBounds(565, 106, 148, 20);
+			contentPane.add(txtPV);
+			txtPV.setColumns(10);
+		}
+		{
+			textArea = new JTextArea();
+			textArea.setBounds(10, 184, 746, 272);
+			contentPane.add(textArea);
+		}
+		{
+			btnNewButton = new JButton("Reportar");
+			btnNewButton.setBounds(125, 142, 120, 20);
+			contentPane.add(btnNewButton);
+		}
+		{
+			btnNewButton_1 = new JButton("Adicionar");
+			btnNewButton_1.setBounds(328, 141, 120, 22);
+			contentPane.add(btnNewButton_1);
+		}
+		{
+			btnNewButton_2 = new JButton("Buscar");
+			btnNewButton_2.setBounds(541, 140, 120, 22);
+			contentPane.add(btnNewButton_2);
+		}
+
+	}
+}
