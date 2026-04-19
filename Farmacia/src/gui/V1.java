@@ -70,8 +70,8 @@ public class V1 extends JFrame implements ActionListener {
 		contentPane.setLayout(null);
 		{
 			lblNewLabel = new JLabel("Sistema de Gestión de Productos ");
-			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 			lblNewLabel.setBounds(262, 11, 267, 14);
+			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 			contentPane.add(lblNewLabel);
 		}
 		{
@@ -147,25 +147,41 @@ public class V1 extends JFrame implements ActionListener {
 		}
 		{
 			btnNewButton = new JButton("Reportar");
+			btnNewButton.setBounds(24, 142, 120, 20);
 			btnNewButton.addActionListener(this);
-			btnNewButton.setBounds(125, 142, 120, 20);
 			contentPane.add(btnNewButton);
 		}
 		{
 			btnNewButton_1 = new JButton("Adicionar");
+			btnNewButton_1.setBounds(335, 141, 120, 22);
 			btnNewButton_1.addActionListener(this);
-			btnNewButton_1.setBounds(328, 141, 120, 22);
 			contentPane.add(btnNewButton_1);
 		}
 		{
 			btnNewButton_2 = new JButton("Buscar");
+			btnNewButton_2.setBounds(179, 141, 128, 22);
 			btnNewButton_2.addActionListener(this);
-			btnNewButton_2.setBounds(541, 140, 120, 22);
 			contentPane.add(btnNewButton_2);
 		}
+		
+		btnNewButton_3 = new JButton("Eliminar");
+		btnNewButton_3.addActionListener(this);
+		btnNewButton_3.setBounds(491, 142, 109, 20);
+		contentPane.add(btnNewButton_3);
+		
+		btnNewButton_4 = new JButton("Modificar");
+		btnNewButton_4.addActionListener(this);
+		btnNewButton_4.setBounds(633, 142, 102, 20);
+		contentPane.add(btnNewButton_4);
 
 	}
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnNewButton_4) {
+			do_btnNewButton_4_actionPerformed(e);
+		}
+		if (e.getSource() == btnNewButton_3) {
+			do_btnNewButton_3_actionPerformed(e);
+		}
 		if (e.getSource() == btnNewButton_2) {
 			do_btnNewButton_2_actionPerformed(e);
 		}
@@ -177,6 +193,8 @@ public class V1 extends JFrame implements ActionListener {
 		}
 	}
 	ArregloProducto ap = new ArregloProducto();
+	private JButton btnNewButton_3;
+	private JButton btnNewButton_4;
 	protected void do_btnNewButton_actionPerformed(ActionEvent e) {
 		txtS.setText(" ");
 		 Listado();
@@ -227,5 +245,45 @@ public class V1 extends JFrame implements ActionListener {
 			Imprimir(pr.getCódigo()+"\t"+pr.getNom()+"\t"+pr.getStock()+"\t"+pr.getcVenta()+"\t"+pr.getpCosto()+"\t"+pr.getpVenta()+"\t");
 		}
 		else JOptionPane.showMessageDialog(this, "El código no existe");
+	}
+	protected void do_btnNewButton_3_actionPerformed(ActionEvent e) {
+		Producto p=ap.Buscar(LeerCodigo());
+		
+		if(p != null) {
+			ap.Eliminar(p);
+			Listado();
+			
+			txtCod.setText("");
+			txtNom.setText("");
+			txtcVender.setText("");
+			txtPc.setText("");
+			txtPV.setText("");
+			txtS.setText("");
+			txtStock.setText("");
+			
+			JOptionPane.showMessageDialog(this, "Producto eliminad !");
+		} else {
+			JOptionPane.showConfirmDialog(this, "No se logró encontrar el producto");
+		}
+			
+		
+	}
+	protected void do_btnNewButton_4_actionPerformed(ActionEvent e) {
+		Producto p=ap.Buscar(LeerCodigo());
+		
+		if(p !=null) {
+			Listado();
+			
+			p.setNom(LeerNombre());
+	        p.setpCosto(LeerPCosto());
+	        p.setStock(LeerStock());
+	        p.setcVenta(LeerCVender());
+	        p.setpVenta(LeerPVenta());
+	        
+			JOptionPane.showMessageDialog(this, "Producto modificado");
+		}
+		else {
+			JOptionPane.showMessageDialog(this, "El código no existe");
+		}
 	}
 } 
