@@ -5,7 +5,10 @@ public class ArregloCliente{
 	private ArrayList<Cliente> lista;
 	
 	public ArregloCliente() {
-		
+		lista = new ArrayList<Cliente>();
+		Adicionar(new Cliente(1001, "Carlos Pérez", "Av. Siempre Viva 123", "carlos@mail.com", 987654321));
+        Adicionar(new Cliente(1002, "Ana García", "Calle Luna 456", "ana@mail.com", 912345678));
+        Adicionar(new Cliente(1003, "Luis Torres", "Jr. Pizarro 789", "luis@mail.com", 955443322));	
 	}
 	public void Adicionar(Cliente c) {
 		lista.add(c);
