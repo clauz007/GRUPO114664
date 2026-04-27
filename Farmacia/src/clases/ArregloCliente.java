@@ -21,6 +21,14 @@ public class ArregloCliente{
 		}
 		return null;
 	}
+	public Cliente Buscar(String nombre) {
+		for (Cliente c : lista) {
+			if(c.getNombreCliente().equalsIgnoreCase(nombre)) {
+				return c;
+			}
+		}
+		return null;
+	}
 	public int tamaño() {
 		return lista.size();
 	}

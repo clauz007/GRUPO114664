@@ -254,19 +254,19 @@ public class V3 extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(this, "¡Cliente Eliminado!");
 		}else JOptionPane.showMessageDialog(this, "¡No se logró encontrar al cliente!");
 	}
-	protected void do_btnModificar_actionPerformed(ActionEvent e) {
-		clases.Cliente b = ac.Buscar(LeerDocumento());
-		if (b != null) {
-			clases.Cliente a = new clases.Cliente(LeerDocumento(), LeerNombresCompletos(), LeerDirección(), LeerCorreo(), LeerCelular());
-			a.setFechaRegistro(b.getFechaRegistro());
-			ac.Modificar(a);
-			Listado();
-			JOptionPane.showMessageDialog(this, "¡Datos del cliente modificado exitosamente!");
-			txtNom.setText("");
-			txtDoc.setText("");
-			txtDir.setText("");
-			txtCor.setText("");
-			txtCel.setText("");
-		} else JOptionPane.showMessageDialog(this, "¡El número del documento no existe, no se puede modificar!");
+		protected void do_btnModificar_actionPerformed(ActionEvent e) {
+			clases.Cliente b = ac.Buscar(LeerDocumento());
+			if (b != null) {
+				clases.Cliente a = new clases.Cliente(LeerDocumento(), LeerNombresCompletos(), LeerDirección(), LeerCorreo(), LeerCelular());
+				a.setFechaRegistro(b.getFechaRegistro());
+				ac.Modificar(a);
+				Listado();
+				JOptionPane.showMessageDialog(this, "¡Datos del cliente modificado exitosamente!");
+				txtNom.setText("");
+				txtDoc.setText("");
+				txtDir.setText("");
+				txtCor.setText("");
+				txtCel.setText("");
+			} else JOptionPane.showMessageDialog(this, "¡El número del documento no existe, no se puede modificar!");
+		}
 	}
-}
