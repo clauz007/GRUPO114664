@@ -212,13 +212,19 @@ public class V1 extends JFrame implements ActionListener {
         }
     }
 	protected void do_btnNewButton_1_actionPerformed(ActionEvent e) {
+		try {
 		Producto p1 = ap.Buscar(LeerCodigo());
 		if (p1 == null) {
             Producto p11 = new Producto(LeerCodigo(), LeerNombre(), LeerStock(), LeerCVender(), LeerPCosto(), LeerPVenta());
             ap.Adicionar(p11);
             Listado();
 		}else JOptionPane.showMessageDialog(this, "El código ya existe");
-	}
+		
+	}catch (NumberFormatException ex) {
+			JOptionPane.showMessageDialog(this, "Error: Ingrese el código válido, stock y precios." , "Dato no válido", JOptionPane.ERROR_MESSAGE);
+			
+		}
+	}	
 	int LeerCodigo() {
 		return Integer.parseInt(txtCod.getText());
 	}
@@ -239,14 +245,20 @@ public class V1 extends JFrame implements ActionListener {
 	}
 	protected void do_btnNewButton_2_actionPerformed(ActionEvent e) {
 		txtS.setText(" ");
+		try {
 		Producto pr = ap.Buscar(LeerCodigo());
 		if (pr != null) {
 			Imprimir("Código\tNombre\tStock\tCant. Vender\tPrecio Costo\tPrecio Venta");
 			Imprimir(pr.getCódigo()+"\t"+pr.getNom()+"\t"+pr.getStock()+"\t"+pr.getcVenta()+"\t"+pr.getpCosto()+"\t"+pr.getpVenta()+"\t");
 		}
 		else JOptionPane.showMessageDialog(this, "El código no existe");
+	} catch (NumberFormatException ex) {
+		JOptionPane.showMessageDialog(this, "Error: Ingrese un código valido para buscarlo.");
+		
 	}
+}	
 	protected void do_btnNewButton_3_actionPerformed(ActionEvent e) {
+		try {
 		Producto p=ap.Buscar(LeerCodigo());
 		
 		if(p != null) {
@@ -265,10 +277,14 @@ public class V1 extends JFrame implements ActionListener {
 		} else {
 			JOptionPane.showConfirmDialog(this, "No se logró encontrar el producto");
 		}
+		} catch (NumberFormatException ex) {
+			JOptionPane.showMessageDialog(this, "Error: Ingrese el código correcto para eliminarlo u.u");
 			
+		}
 		
 	}
 	protected void do_btnNewButton_4_actionPerformed(ActionEvent e) {
+		try {
 		Producto p=ap.Buscar(LeerCodigo());
 		
 		if(p !=null) {
@@ -285,5 +301,8 @@ public class V1 extends JFrame implements ActionListener {
 		else {
 			JOptionPane.showMessageDialog(this, "El código no existe");
 		}
+	} catch (NumberFormatException ex) {
+		JOptionPane.showMessageDialog(this, "Error: Revise si el código y precios sean validos" , "Error entrada", JOptionPane.ERROR_MESSAGE);
 	}
-} 
+ } 
+}	
