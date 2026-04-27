@@ -254,7 +254,6 @@ public class V1 extends JFrame implements ActionListener {
 		else JOptionPane.showMessageDialog(this, "El código no existe");
 	} catch (NumberFormatException ex) {
 		JOptionPane.showMessageDialog(this, "Error: Ingrese un código valido para buscarlo.");
-		
 	}
 }	
 	protected void do_btnNewButton_3_actionPerformed(ActionEvent e) {

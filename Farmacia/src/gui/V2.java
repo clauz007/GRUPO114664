@@ -222,7 +222,7 @@ public class V2 extends JFrame implements ActionListener {
 			Distribuidor d11 = new Distribuidor(leerCodigo(), leerNombre(), leerRazonSocial(), leeRUC(), leerTipoProduc(), FechaRegistro());
 			aD.Adicionar(d11);
 			Listado();
-		}else JOptionPane.showMessageDialog(this, "El producto ya existe");
+		}else JOptionPane.showMessageDialog(this, "El producto ya existe");		
 	}
 	int leerCodigo() {
 		return Integer.parseInt(txtCod.getText());

@@ -24,6 +24,14 @@ public class ArregloProducto {
 		}
 		return null;
 	}
+	public Producto Buscar (String nom) {
+		for (Producto p : lista) {
+			if (p.getNom().equalsIgnoreCase(nom)) {
+				return p;
+			}
+		}
+		return null;
+	}
 	public int tamaño() {
 		return lista.size();
 	}
@@ -31,11 +39,9 @@ public class ArregloProducto {
 		return lista.get(p);
 	}
 	public void Eliminar(Producto p) {
-		lista.remove(p);
-		
+		lista.remove(p);	
 	}
 	public void Modificar(Producto p) {
 		lista.remove(p);
 	}
-	
 }

@@ -205,6 +205,7 @@ public class V3 extends JFrame implements ActionListener {
 		}
 	}
 	protected void do_btnAdicionar_actionPerformed(ActionEvent e) {
+		try {
 		clases.Cliente c1 = ac.Buscar(LeerDocumento());
 		if (c1 == null) {
 			clases.Cliente c11 = new clases.Cliente(LeerDocumento(), LeerNombresCompletos(), LeerDirección(), LeerCorreo(), LeerCelular());
@@ -215,7 +216,10 @@ public class V3 extends JFrame implements ActionListener {
 		txtDoc.setText("");
 		txtDir.setText("");
 		txtCor.setText("");
-		txtCel.setText("");			
+		txtCel.setText("");		
+		} catch (NumberFormatException ex) {
+			JOptionPane.showMessageDialog(this, "Error: Ingrese el número de documento, dirección, correo y número de celular válidos." , "Dato no válido", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 	int LeerDocumento() {
 		return Integer.parseInt(txtDoc.getText());
@@ -234,14 +238,19 @@ public class V3 extends JFrame implements ActionListener {
 	}
 	protected void do_btnBuscar_actionPerformed(ActionEvent e) {
 		txtC.setText("");
+		try {
 		clases.Cliente cr = ac.Buscar(LeerDocumento());
 		if (cr != null) {
 			Imprimir("N° de Documento\tNombres Completos\tDirección\tCorreo Eléctronico\tN° de Celular\tFecha de Registro");
 			Imprimir("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 			Imprimir(cr.getDocumento()+"\t"+cr.getNombreCliente()+"\t"+cr.getDirección()+"\t"+cr.getCorreo()+"\t"+cr.getCelular()+"\t"+cr.getFechaRegistro());
 		} else JOptionPane.showMessageDialog(this, "El número del documento no existe");
+	} catch (NumberFormatException ex) {
+		JOptionPane.showMessageDialog(this, "Error: Ingrese un número de documento valido.");
+	}
 	}
 	protected void do_btnEliminar_actionPerformed(ActionEvent e) {
+		try {
 		clases.Cliente c = ac.Buscar(LeerDocumento());
 		if (c != null) {
 			ac.Eliminar(c);
@@ -253,8 +262,12 @@ public class V3 extends JFrame implements ActionListener {
 			txtCel.setText("");
 			JOptionPane.showMessageDialog(this, "¡Cliente Eliminado!");
 		}else JOptionPane.showMessageDialog(this, "¡No se logró encontrar al cliente!");
+	} catch (NumberFormatException ex) {
+		JOptionPane.showMessageDialog(this, "Error: Ingrese un número de documento válido.");
+	}
 	}
 		protected void do_btnModificar_actionPerformed(ActionEvent e) {
+			try {
 			clases.Cliente b = ac.Buscar(LeerDocumento());
 			if (b != null) {
 				clases.Cliente a = new clases.Cliente(LeerDocumento(), LeerNombresCompletos(), LeerDirección(), LeerCorreo(), LeerCelular());
@@ -268,5 +281,9 @@ public class V3 extends JFrame implements ActionListener {
 				txtCor.setText("");
 				txtCel.setText("");
 			} else JOptionPane.showMessageDialog(this, "¡El número del documento no existe, no se puede modificar!");
+		} catch (NumberFormatException ex) {
+			JOptionPane.showMessageDialog(this, "Error: Revise si el número de documento sean validos" , "Error entrada", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+}
+	
