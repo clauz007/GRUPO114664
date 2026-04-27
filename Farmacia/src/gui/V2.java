@@ -5,30 +5,20 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import clases.ArregloDistribuidor;
+import clases.Distribuidor;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
-import javax.swing.JToolBar;
-import javax.swing.JInternalFrame;
-import javax.swing.JCheckBox;
-import javax.swing.JList;
-import javax.swing.JScrollBar;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JTextArea;
 import javax.swing.JButton;
-import javax.swing.SwingConstants;
-import java.awt.SystemColor;
-import java.awt.Color;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-
-import clases.ArregloProveedores;
-import clases.Proveedores;
-
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.awt.event.ActionEvent;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 
 public class V2 extends JFrame implements ActionListener {
 
@@ -41,25 +31,14 @@ public class V2 extends JFrame implements ActionListener {
 	private JLabel lblNewLabel_4;
 	private JLabel lblNewLabel_5;
 	private JLabel lblNewLabel_6;
-	private JLabel lblNewLabel_7;
-	private JLabel lblNewLabel_8;
-	private JTextField txtCod;
-	private JTextField txtNom;
+	private JTextField txtTipoProdc;
+	private JTextField txtFechaRegis;
+	private JTextArea txtS;
 	private JButton btnMostrar;
 	private JButton btnAdicionar;
-	private JButton btnBuscar;
 	private JButton btnEliminar;
+	private JButton btnBuscar;
 	private JButton btnModificar;
-	private JLabel lblNewLabel_9;
-	private JTextField txtRznSocial;
-	private JTextField txtRUC;
-	private JTextField txtFechRegis;
-	private JTextField txtTProdc;
-	private JTextField txtContacto;
-	private JTextField txtTelf;
-	private JTextField txtCorreo;
-	private JScrollPane scrollPane;
-	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -82,256 +61,225 @@ public class V2 extends JFrame implements ActionListener {
 	 */
 	public V2() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 888, 694);
+		setBounds(100, 100, 861, 565);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		{
-			lblNewLabel = new JLabel("GESTIÓN DE PROVEEDORES");
-			lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
-			lblNewLabel.setBounds(269, 0, 285, 53);
+			lblNewLabel = new JLabel("GESTION DE DISTRIBUIDORES");
+			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
+			lblNewLabel.setBounds(246, 11, 323, 62);
 			contentPane.add(lblNewLabel);
 		}
 		{
-			lblNewLabel_1 = new JLabel("Código:");
-			lblNewLabel_1.setFont(new Font("Arial Narrow", Font.BOLD, 14));
-			lblNewLabel_1.setBounds(38, 63, 62, 17);
+			lblNewLabel_1 = new JLabel("Código: ");
+			lblNewLabel_1.setBounds(47, 93, 46, 14);
 			contentPane.add(lblNewLabel_1);
 		}
 		{
 			lblNewLabel_2 = new JLabel("Nombre: ");
-			lblNewLabel_2.setFont(new Font("Arial Narrow", Font.BOLD, 14));
-			lblNewLabel_2.setBounds(38, 92, 51, 22);
+			lblNewLabel_2.setBounds(47, 121, 46, 14);
 			contentPane.add(lblNewLabel_2);
 		}
 		{
-			lblNewLabel_3 = new JLabel("R.U.C:");
-			lblNewLabel_3.setFont(new Font("Arial Narrow", Font.BOLD, 14));
-			lblNewLabel_3.setBounds(291, 63, 40, 14);
+			lblNewLabel_3 = new JLabel("Razon Social: ");
+			lblNewLabel_3.setBounds(276, 93, 90, 14);
 			contentPane.add(lblNewLabel_3);
 		}
 		{
-			lblNewLabel_4 = new JLabel("Teléfono:");
-			lblNewLabel_4.setFont(new Font("Arial Narrow", Font.BOLD, 14));
-			lblNewLabel_4.setBounds(478, 93, 51, 14);
+			lblNewLabel_4 = new JLabel("R.U.C:");
+			lblNewLabel_4.setBounds(307, 121, 46, 14);
 			contentPane.add(lblNewLabel_4);
 		}
 		{
-			lblNewLabel_5 = new JLabel("Correo: ");
-			lblNewLabel_5.setFont(new Font("Arial Narrow", Font.BOLD, 14));
-			lblNewLabel_5.setBounds(488, 128, 51, 14);
+			lblNewLabel_5 = new JLabel("Tipo de Producto: ");
+			lblNewLabel_5.setBounds(554, 93, 104, 14);
 			contentPane.add(lblNewLabel_5);
 		}
 		{
-			lblNewLabel_6 = new JLabel("Contacto: ");
-			lblNewLabel_6.setFont(new Font("Arial Narrow", Font.BOLD, 14));
-			lblNewLabel_6.setBounds(478, 63, 62, 14);
+			lblNewLabel_6 = new JLabel("Fecha de Registro: ");
+			lblNewLabel_6.setBounds(548, 118, 110, 14);
 			contentPane.add(lblNewLabel_6);
 		}
 		{
-			lblNewLabel_7 = new JLabel("Tipo de Producto: ");
-			lblNewLabel_7.setFont(new Font("Arial Narrow", Font.BOLD, 14));
-			lblNewLabel_7.setBounds(231, 128, 99, 17);
-			contentPane.add(lblNewLabel_7);
+			txtTipoProdc = new JTextField();
+			txtTipoProdc.setBounds(668, 90, 131, 20);
+			contentPane.add(txtTipoProdc);
+			txtTipoProdc.setColumns(10);
 		}
 		{
-			lblNewLabel_8 = new JLabel("Fecha de Registro: ");
-			lblNewLabel_8.setFont(new Font("Arial Narrow", Font.BOLD, 14));
-			lblNewLabel_8.setBounds(227, 93, 108, 17);
-			contentPane.add(lblNewLabel_8);
+			txtFechaRegis = new JTextField();
+			txtFechaRegis.setBounds(668, 115, 131, 20);
+			contentPane.add(txtFechaRegis);
+			txtFechaRegis.setColumns(10);
 		}
 		{
-			txtCod = new JTextField();
-			txtCod.setBounds(90, 63, 120, 20);
-			contentPane.add(txtCod);
-			txtCod.setColumns(10);
+			txtS = new JTextArea();
+			txtS.setFont(new Font("Monospaced", Font.PLAIN, 12));
+			txtS.setBounds(10, 194, 825, 321);
+			contentPane.add(txtS);
 		}
 		{
-			txtNom = new JTextField();
-			txtNom.setBounds(90, 94, 120, 20);
-			contentPane.add(txtNom);
-			txtNom.setColumns(10);
-		}
-		{
-			btnMostrar = new JButton("Mostrar ");
+			btnMostrar = new JButton("Mostrar");
 			btnMostrar.addActionListener(this);
-			btnMostrar.setBounds(87, 167, 89, 23);
+			btnMostrar.setBounds(30, 160, 89, 23);
 			contentPane.add(btnMostrar);
 		}
 		{
 			btnAdicionar = new JButton("Adicionar");
-			btnAdicionar.setBounds(464, 167, 89, 23);
+			btnAdicionar.addActionListener(this);
+			btnAdicionar.setBounds(173, 160, 89, 23);
 			contentPane.add(btnAdicionar);
+		}
+		{
+			btnEliminar = new JButton("Eliminar");
+			btnEliminar.addActionListener(this);
+			btnEliminar.setBounds(322, 160, 89, 23);
+			contentPane.add(btnEliminar);
 		}
 		{
 			btnBuscar = new JButton("Buscar");
 			btnBuscar.addActionListener(this);
-			btnBuscar.setBounds(214, 167, 89, 23);
+			btnBuscar.setBounds(480, 160, 89, 23);
 			contentPane.add(btnBuscar);
 		}
 		{
-			btnEliminar = new JButton("Eliminar");
-			btnEliminar.setBounds(344, 167, 89, 23);
-			contentPane.add(btnEliminar);
-		}
-		{
 			btnModificar = new JButton("Modificar");
-			btnModificar.setBackground(new Color(245, 245, 245));
-			btnModificar.setBounds(597, 167, 89, 23);
+			btnModificar.addActionListener(this);
+			btnModificar.setBounds(665, 160, 89, 23);
 			contentPane.add(btnModificar);
 		}
 		{
-			lblNewLabel_9 = new JLabel("Razon Social: ");
-			lblNewLabel_9.setFont(new Font("Arial Narrow", Font.BOLD, 14));
-			lblNewLabel_9.setBounds(10, 128, 86, 14);
-			contentPane.add(lblNewLabel_9);
-		}
-		{
-			txtRznSocial = new JTextField();
-			txtRznSocial.setColumns(10);
-			txtRznSocial.setBounds(90, 125, 120, 20);
-			contentPane.add(txtRznSocial);
+			txtRzonSocial = new JTextField();
+			txtRzonSocial.setColumns(10);
+			txtRzonSocial.setBounds(364, 90, 131, 20);
+			contentPane.add(txtRzonSocial);
 		}
 		{
 			txtRUC = new JTextField();
 			txtRUC.setColumns(10);
-			txtRUC.setBounds(336, 63, 120, 20);
+			txtRUC.setBounds(363, 118, 131, 20);
 			contentPane.add(txtRUC);
 		}
 		{
-			txtFechRegis = new JTextField();
-			txtFechRegis.setColumns(10);
-			txtFechRegis.setBounds(336, 94, 120, 20);
-			contentPane.add(txtFechRegis);
+			txtCod = new JTextField();
+			txtCod.setColumns(10);
+			txtCod.setBounds(103, 90, 131, 20);
+			contentPane.add(txtCod);
 		}
 		{
-			txtTProdc = new JTextField();
-			txtTProdc.setColumns(10);
-			txtTProdc.setBounds(336, 125, 120, 20);
-			contentPane.add(txtTProdc);
-		}
-		{
-			txtContacto = new JTextField();
-			txtContacto.setColumns(10);
-			txtContacto.setBounds(540, 63, 120, 20);
-			contentPane.add(txtContacto);
-		}
-		{
-			txtTelf = new JTextField();
-			txtTelf.setColumns(10);
-			txtTelf.setBounds(540, 94, 120, 20);
-			contentPane.add(txtTelf);
-		}
-		{
-			txtCorreo = new JTextField();
-			txtCorreo.setColumns(10);
-			txtCorreo.setBounds(540, 125, 120, 20);
-			contentPane.add(txtCorreo);
-		}
-		{
-			scrollPane = new JScrollPane();
-			scrollPane.setBounds(10, 211, 852, 433);
-			contentPane.add(scrollPane);
-			{
-				table = new JTable();
-				table.setModel(new DefaultTableModel(
-					new Object[][] {
-					},
-					new String[] {
-						"C\u00F3digo", "Nombre", "Razon social", "R.U.C", "Fecha de registro", "Tipo de producto", "Contacto", "Tel\u00E9fono", "Correo", "Estado", "Frecuencia"
-					}
-				) {
-					Class[] columnTypes = new Class[] {
-						Integer.class, String.class, String.class, String.class, Object.class, String.class, String.class, String.class, String.class, Object.class, Object.class
-					};
-					public Class getColumnClass(int columnIndex) {
-						return columnTypes[columnIndex];
-					}
-					boolean[] columnEditables = new boolean[] {
-						false, false, false, false, false, false, false, false, false, false, false
-					};
-					public boolean isCellEditable(int row, int column) {
-						return columnEditables[column];
-					}
-				});
-				table.getColumnModel().getColumn(0).setResizable(false);
-				table.getColumnModel().getColumn(0).setPreferredWidth(65);
-				table.getColumnModel().getColumn(1).setResizable(false);
-				table.getColumnModel().getColumn(1).setPreferredWidth(100);
-				table.getColumnModel().getColumn(2).setResizable(false);
-				table.getColumnModel().getColumn(2).setPreferredWidth(130);
-				table.getColumnModel().getColumn(3).setResizable(false);
-				table.getColumnModel().getColumn(3).setPreferredWidth(100);
-				table.getColumnModel().getColumn(4).setResizable(false);
-				table.getColumnModel().getColumn(4).setPreferredWidth(103);
-				table.getColumnModel().getColumn(5).setResizable(false);
-				table.getColumnModel().getColumn(5).setPreferredWidth(103);
-				table.getColumnModel().getColumn(6).setResizable(false);
-				table.getColumnModel().getColumn(6).setPreferredWidth(120);
-				table.getColumnModel().getColumn(7).setResizable(false);
-				table.getColumnModel().getColumn(8).setResizable(false);
-				table.getColumnModel().getColumn(8).setPreferredWidth(150);
-				table.getColumnModel().getColumn(9).setResizable(false);
-				table.getColumnModel().getColumn(10).setResizable(false);
-				scrollPane.setViewportView(table);
-			}
-			
-		}
-		{
-			comboestado = new JComboBox();
-			comboestado.setModel(new DefaultComboBoxModel(new String[] {"Activo", "Inactivo"}));
-			comboestado.setBounds(689, 70, 80, 22);
-			contentPane.add(comboestado);
-		}
-		{
-			lblNewLabel_10 = new JLabel("Estado:");
-			lblNewLabel_10.setFont(new Font("Arial Narrow", Font.BOLD, 14));
-			lblNewLabel_10.setBounds(689, 52, 46, 14);
-			contentPane.add(lblNewLabel_10);
-		}
-		{
-			lblNewLabel_11 = new JLabel("Frecuencia: ");
-			lblNewLabel_11.setFont(new Font("Arial Narrow", Font.BOLD, 14));
-			lblNewLabel_11.setBounds(689, 106, 73, 14);
-			contentPane.add(lblNewLabel_11);
-		}
-		{
-			comboFrecuen = new JComboBox();
-			comboFrecuen.setModel(new DefaultComboBoxModel(new String[] {"Poco frecuente", "Frecuente", "Muy Frecuente"}));
-			comboFrecuen.setBounds(689, 124, 120, 22);
-			contentPane.add(comboFrecuen);
+			txtNom = new JTextField();
+			txtNom.setColumns(10);
+			txtNom.setBounds(103, 118, 131, 20);
+			contentPane.add(txtNom);
 		}
 
 	}
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnModificar) {
+			do_btnModificar_actionPerformed(e);
+		}
 		if (e.getSource() == btnBuscar) {
 			do_btnBuscar_actionPerformed(e);
+		}
+		if (e.getSource() == btnEliminar) {
+			do_btnEliminar_actionPerformed(e);
+		}
+		if (e.getSource() == btnAdicionar) {
+			do_btnAdicionar_actionPerformed(e);
 		}
 		if (e.getSource() == btnMostrar) {
 			do_btnMostrar_actionPerformed(e);
 		}
 	}
-	ArregloProveedores ap = new ArregloProveedores();
-	private JComboBox comboestado;
-	private JLabel lblNewLabel_10;
-	private JLabel lblNewLabel_11;
-	private JComboBox comboFrecuen;
+	ArregloDistribuidor aD = new ArregloDistribuidor();
+	private JTextField txtRzonSocial;
+	private JTextField txtRUC;
+	private JTextField txtCod;
+	private JTextField txtNom;
 	protected void do_btnMostrar_actionPerformed(ActionEvent e) {
+		txtS.setText("");
 		Listado();
-
 	}
-	void Listado() {
-		 DefaultTableModel modelo = (DefaultTableModel) table.getModel();
-		 modelo.setRowCount(0);
-		 
-		 for ( int i = 0; i < ap.tamaño(); i++) {
-			 Proveedores pr = ap.Obtener(i);
-			 
-			 modelo.addRow(new Object[] {pr.getCodigo(), pr.getNom(), pr.getRaznSocl(), pr.getRuc(), pr.getFechaRegis(), pr.getTipoProdc(), pr.getContacto(),
-					 					pr.getTelf(), pr.getCorreo()});
-			 }
-		 }
+	void Imprimir (String s) {
+		txtS.append(s + "\n");
+	}
+	void Listado ()
+	{ txtS.setText("");
+	
+	Imprimir(String.format("%-6s %-28s %-28s %-13s %-18s %-15s","Código", "Nombre", "Razon Social", "R.U.C", "Tipo de producto", "Fecha de registro"));
+	Imprimir("-----------------------------------------------------------------------------------------------------------------------------");
+	
+	for (int i = 0; i < aD.Tamaño(); i++) {
+		Imprimir(String.format("%-6s %-28s %-28s %-13s %-18s %-15s", aD.Obtener(i).getCodigo(), aD.Obtener(i).getNombre(), aD.Obtener(i).getRazonSoc(), aD.Obtener(i).getRuc(), aD.Obtener(i).getTipoProdc() 
+								, aD.Obtener(i).getFechaRegis()));
+	}		
+	}
+	protected void do_btnAdicionar_actionPerformed(ActionEvent e) {
+		Distribuidor d1 = aD.Buscar(leerCodigo());
+		if (d1 == null) {
+			Distribuidor d11 = new Distribuidor(leerCodigo(), leerNombre(), leerRazonSocial(), leeRUC(), leerTipoProduc(), FechaRegistro());
+			aD.Adicionar(d11);
+			Listado();
+		}else JOptionPane.showMessageDialog(this, "El producto ya existe");
+	}
+	int leerCodigo() {
+		return Integer.parseInt(txtCod.getText());
+	}
+	String leerNombre() {
+		return txtNom.getText();
+	}
+	String leeRUC() {
+		return txtRUC.getText();
+	}
+	String leerRazonSocial() {
+		return txtRzonSocial.getText();
+	}
+	String leerTipoProduc() {
+		return txtTipoProdc.getText();
+	}
+	LocalDate FechaRegistro() {
+		return LocalDate.parse(txtFechaRegis.getText());
+	}
+	protected void do_btnEliminar_actionPerformed(ActionEvent e) {
+		Distribuidor d = aD.Buscar(leerCodigo());
+		if (d != null) {
+			aD.Eliminar(d);
+			Listado();
+			
+			txtCod.setText("");
+			txtNom.setText("");
+			txtRzonSocial.setText("");
+			txtRUC.setText("");
+			txtTipoProdc.setText("");
+			txtFechaRegis.setText("");
+			JOptionPane.showMessageDialog(this, "Distribuidor eliminado");
+		}else JOptionPane.showMessageDialog(this, "No se logro encontrar el producto");
+		
+	}
 	protected void do_btnBuscar_actionPerformed(ActionEvent e) {
+		txtS.setText("");
+		Distribuidor d = aD.Buscar(leerCodigo());
+		if (d != null) {
+			Imprimir("Código \tNombre \tRazon Social \tR.U.C \tTipo de Producto \tFecha de Resgitro");
+			Imprimir("-------------------------------------------------------------------------------");
+			Imprimir(d.getCodigo() + "\t" + d.getNombre() + "\t" + d.getRazonSoc() + "\t" + d.getRuc()+ "\t" + d.getTipoProdc()+"\t" + d.getFechaRegis()); 
+			JOptionPane.showMessageDialog(this, "Distribuidor encontrado");
+		}else JOptionPane.showMessageDialog(this, "Distribuidor no encontrado");
+	}
+	protected void do_btnModificar_actionPerformed(ActionEvent e) {
+		Distribuidor d = aD.Buscar(leerCodigo());
+		if (d != null) {
+			d.setCodigo(leerCodigo());
+			d.setNombre(leerNombre());
+			d.setRazonSoc(leerRazonSocial());
+			d.setRuc(leeRUC());
+			d.setTipoProdc(leerTipoProduc());
+			d.setFechaRegis(FechaRegistro());
+			
+			Listado();
+			JOptionPane.showMessageDialog(this, "Distribuidor modificado");
+		}else JOptionPane.showMessageDialog(this, "El distribuidor no ha sido encontrado");
 	}
 }
